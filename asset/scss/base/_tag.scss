@@ -1,0 +1,23 @@
+html,
+body {
+  background-color: var(--main-bg-color);
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+}
+
+hr {
+  border-color: var(--grey-color);
+  height: 2px;
+  width: 42px;
+
+  &.hr-white {
+    border-color: var(--white);
+  }
+
+  &.hr-grey {
+    border-color: var(--grey-color);
+  }
+}

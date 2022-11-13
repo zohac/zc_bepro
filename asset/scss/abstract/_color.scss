@@ -1,0 +1,15 @@
+:root {
+  --black: hsla(0, 0%, 0%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --light-grey-color: hsla(212, 7%, 35%, 0.2);
+  --grey-color: hsla(210, 8%, 35%, 1);
+  --dark-grey-color: hsla(220, 12%, 20%, 1);
+
+  --main-bg-color: hsla(0, 0%, 98%, 1);
+  --second-bg-color: var(--grey-color);
+
+  --main-font-color: var(--grey-color);
+  --second-font-color: var(--white);
+  --main-font-title-color: var(--white);
+
+}
