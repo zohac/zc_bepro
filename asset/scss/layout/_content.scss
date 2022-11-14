@@ -1,0 +1,9 @@
+.content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0 var(--grid-gap);
+}
+
+.site-main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - ( var(--grid-gap) * 2 ));
+}
