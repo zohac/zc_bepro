@@ -1,43 +1,49 @@
 .site-header {
+  border-bottom: var(--border-solid);
+  position: sticky;
+  top: 0;
+
+  background-color: var(--main-bg-color);
+
+  .container {
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 0 1rem;
-
-    border-bottom: 1px solid var(--light-grey-color);
+    height: 100%;
+  }
 }
 
 .site-branding {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: start;
-
-    font-style: normal;
-    margin-left: var(--margin);
-
-    height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: start;
+  font-style: normal;
+  height: 100%;
 }
 
 .site-title {
-    font-weight: 900;
-    font-size: 1.5rem;
+  font-weight: 900;
+  font-size: 1.5rem;
+
+  height: 100%;
+  margin: 0;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-decoration: none;
 
     height: 100%;
-    margin: 0;
-
-    a {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        height: 100%;
-    }
+  }
 
 }
 
 .site-description {
-    font-weight: 300;
-    font-size: 0.9375rem;
-    line-height: 2;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 2;
 
-    align-self: end;
+  align-self: end;
 }

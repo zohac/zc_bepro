@@ -1,5 +1,21 @@
+$breakpoints-container: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
 :root {
-    --header-height: 85px;
-    --footer-height: 50px;
-    --margin: 7vw;
+  --header-height: 85px;
+  --footer-height: 50px;
+  --margin: 7vw;
+  --padding: 15px;
+  --border-solid: 1px solid var(--light-grey-color);
+  --grid-gap: 15px;
+  --max-width-sm: calc(#{map-get($breakpoints-container, "sm")} - ( var(--margin) * 2 ));
+  --max-width-md: calc(#{map-get($breakpoints-container, "md")} - ( var(--margin) * 2 ));
+  --max-width-lg: calc(#{map-get($breakpoints-container, "lg")} - ( var(--margin) * 2 ));
+  --max-width-xl: calc(#{map-get($breakpoints-container, "xl")} - ( var(--margin) * 2 ));
+  --max-width-xxl: 87vw;
 }

@@ -1,17 +1,16 @@
 html,
 body {
-    background-color: var(--main-bg-color);
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    width: 100vw;
+  background-color: var(--main-bg-color);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
 }
 
 a {
-    color: var(--main-font-color);
+  color: var(--main-font-color);
 
-    &:visited {
-        color: var(--main-font-color);
-    }
+  &:visited {
+    color: var(--main-font-color);
+  }
 }
