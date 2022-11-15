@@ -1,0 +1,129 @@
+@import "../abstract/variables";
+
+.main-navigation {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  width: 100%;
+
+  &.toggled {
+
+    .overlay {
+      width: 100vw;
+      height: 100vh;
+      background-color: hsla(0, 0%, 0%, 0.75);
+      z-index: 0;
+    }
+
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60vw;
+      height: 100vh;
+      z-index: 1;
+
+      ul {
+        background-color: var(--main-bg-color);
+        height: 100%;
+        width: 100%;
+
+        padding-top: var(--padding);
+      }
+    }
+  }
+
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+
+    @media (min-width: map-get($breakpoints-container, "md")) {
+      display: flex;
+    }
+
+    ul {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      float: left;
+      position: absolute;
+      top: 100%;
+      left: -999em;
+      z-index: 99999;
+
+      ul {
+        left: -999em;
+        top: 0;
+      }
+
+      li:hover > ul,
+      li.focus > ul {
+        display: block;
+        left: auto;
+      }
+
+      a {
+        width: 200px;
+      }
+    }
+
+    li:hover > ul,
+    li.focus > ul {
+      left: auto;
+    }
+
+    li {
+      position: relative;
+      border-bottom: var(--border-solid);
+      padding: var(--padding);
+
+      @media (min-width: map-get($breakpoints-container, "md")) {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Small menu. */
+.main-navigation.toggled ul {
+  display: block;
+}
+
+.menu-toggle {
+  display: block;
+
+  @media (min-width: map-get($breakpoints-container, "md")) {
+    display: none;
+  }
+}
+
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+  margin: 0 0 1.5em;
+}
+
+.comment-navigation .nav-links,
+.posts-navigation .nav-links,
+.post-navigation .nav-links {
+  display: flex;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  flex: 1 0 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  text-align: end;
+  flex: 1 0 50%;
+}

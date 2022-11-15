@@ -1,3 +1,5 @@
+@import "../abstract/variables";
+
 .site-header {
   border-bottom: var(--border-solid);
   position: sticky;
@@ -41,9 +43,14 @@
 }
 
 .site-description {
+  display: none;
   font-weight: 300;
   font-size: 0.9375rem;
   line-height: 2;
 
   align-self: end;
+
+  @media (min-width: map-get($breakpoints-container, "lg")) {
+    display: block;
+  }
 }

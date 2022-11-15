@@ -13,6 +13,7 @@
 	}
 
 	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+	const menuOverlay = siteNavigation.getElementsByClassName( 'overlay' )[ 0 ];
 
 	// Return early if the button doesn't exist.
 	if ( 'undefined' === typeof button ) {
@@ -39,6 +40,16 @@
 			button.setAttribute( 'aria-expanded', 'false' );
 		} else {
 			button.setAttribute( 'aria-expanded', 'true' );
+		}
+	} );
+
+	menuOverlay.addEventListener( 'click', function() {
+		siteNavigation.classList.toggle( 'toggled' );
+
+		if ( menuOverlay.getAttribute( 'aria-expanded' ) === 'true' ) {
+			menuOverlay.setAttribute( 'aria-expanded', 'false' );
+		} else {
+			menuOverlay.setAttribute( 'aria-expanded', 'true' );
 		}
 	} );
 

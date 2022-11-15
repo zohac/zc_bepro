@@ -53,7 +53,8 @@ use ZcBepro\Includes\Logo;
             </div><!-- .site-branding -->
 
             <nav id="site-navigation" class="main-navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'zc_bepro' ); ?></button>
+                <div class="overlay"></div>
+                <button class="btn menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'zc_bepro' ); ?></button>
                 <?php
                 wp_nav_menu(
                     array(
