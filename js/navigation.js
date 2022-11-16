@@ -12,6 +12,26 @@
 		return;
 	}
 
+	const submenus = siteNavigation.getElementsByClassName( 'menu-item-has-children' );
+
+	function toggleMenu( event, submenu ) {
+		event.preventDefault();
+		const menu = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
+		menu.classList.toggle( 'toggled' );
+	}
+
+	for ( const submenu of submenus ) {
+		const link = submenu.getElementsByTagName( 'a' )[ 0 ];
+
+		link.addEventListener( 'click', function( event ) {
+			toggleMenu( event, submenu );
+		} );
+
+		link.addEventListener( 'touchend', function( event ) {
+			toggleMenu( event, submenu );
+		} );
+	}
+
 	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
 	const menuOverlay = siteNavigation.getElementsByClassName( 'overlay' )[ 0 ];
 
@@ -32,8 +52,7 @@
 		menu.classList.add( 'nav-menu' );
 	}
 
-	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-	button.addEventListener( 'click', function() {
+	function toggledMenu() {
 		siteNavigation.classList.toggle( 'toggled' );
 
 		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
@@ -41,15 +60,19 @@
 		} else {
 			button.setAttribute( 'aria-expanded', 'true' );
 		}
+	}
+
+	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
+	button.addEventListener( 'click', function() {
+		toggledMenu();
 	} );
 
 	menuOverlay.addEventListener( 'click', function() {
-		siteNavigation.classList.toggle( 'toggled' );
+		toggledMenu();
 
-		if ( menuOverlay.getAttribute( 'aria-expanded' ) === 'true' ) {
-			menuOverlay.setAttribute( 'aria-expanded', 'false' );
-		} else {
-			menuOverlay.setAttribute( 'aria-expanded', 'true' );
+		for ( const submenu of submenus ) {
+			const menu = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
+			menu.classList.remove( 'toggled' );
 		}
 	} );
 

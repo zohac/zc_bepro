@@ -7,6 +7,84 @@
 
   width: 100%;
 
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    height: 100%;
+    width: auto;
+
+    @media (min-width: map-get($breakpoints-container, "md")) {
+      display: flex;
+    }
+  }
+
+  .menu-item a {
+    display: block;
+    text-decoration: none;
+    padding: var(--padding);
+    border-bottom: var(--border-solid);
+    background-color: var(--main-bg-color);
+
+    @media (min-width: map-get($breakpoints-container, "md")) {
+      border-bottom: none;
+    }
+  }
+
+  .menu-item-has-children {
+    position: relative;
+
+    > a::after {
+      content: ">";
+      margin-left: var(--margin);
+      float: right;
+    }
+
+    &:hover {
+
+      > a::after {
+        transform: rotate(90deg);
+      }
+
+      @media (min-width: map-get($breakpoints-container, "md")) {
+
+        > .sub-menu {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .sub-menu {
+    background-color: var(--main-bg-color);
+    position: absolute;
+    z-index: 9999;
+    left: var(--margin);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    height: auto;
+    width: auto;
+
+    &.toggled {
+      display: block;
+    }
+
+    @media (min-width: map-get($breakpoints-container, "md")) {
+      display: none;
+
+      li a {
+        border-bottom: var(--border-solid);
+        display: flex;
+        width: 100%;
+        white-space: nowrap;
+      }
+
+      li:last-child a {
+        border-bottom: none;
+      }
+    }
+  }
+
   &.toggled {
 
     .overlay {
@@ -17,6 +95,7 @@
     }
 
     > div {
+      background-color: var(--main-bg-color);
       position: absolute;
       top: 0;
       left: 0;
@@ -24,75 +103,12 @@
       height: 100vh;
       z-index: 1;
 
-      ul {
-        background-color: var(--main-bg-color);
-        height: 100%;
-        width: 100%;
-
+      .menu.nav-menu {
+        display: block;
         padding-top: var(--padding);
       }
     }
   }
-
-  ul {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-
-    @media (min-width: map-get($breakpoints-container, "md")) {
-      display: flex;
-    }
-
-    ul {
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-      float: left;
-      position: absolute;
-      top: 100%;
-      left: -999em;
-      z-index: 99999;
-
-      ul {
-        left: -999em;
-        top: 0;
-      }
-
-      li:hover > ul,
-      li.focus > ul {
-        display: block;
-        left: auto;
-      }
-
-      a {
-        width: 200px;
-      }
-    }
-
-    li:hover > ul,
-    li.focus > ul {
-      left: auto;
-    }
-
-    li {
-      position: relative;
-      border-bottom: var(--border-solid);
-      padding: var(--padding);
-
-      @media (min-width: map-get($breakpoints-container, "md")) {
-        border-bottom: none;
-      }
-    }
-
-    a {
-      display: block;
-      text-decoration: none;
-    }
-  }
-}
-
-/* Small menu. */
-.main-navigation.toggled ul {
-  display: block;
 }
 
 .menu-toggle {
