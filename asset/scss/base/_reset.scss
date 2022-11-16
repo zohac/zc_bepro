@@ -10,12 +10,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Normalize
 	- Box sizing
 # Base
-	- Typography
 	- Elements
-	- Links
 	- Forms
 # Components
-	- Posts and pages
 	- Comments
 	- Widgets
 	- Media
@@ -434,31 +431,6 @@ table {
   width: 100%;
 }
 
-/* Links
---------------------------------------------- */
-a {
-  color: #4169e1;
-}
-
-a:visited {
-  color: #800080;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: #191970;
-}
-
-a:focus {
-  outline: thin dotted;
-}
-
-a:hover,
-a:active {
-  outline: 0;
-}
-
 /* Forms
 --------------------------------------------- */
 button,
@@ -544,32 +516,6 @@ textarea {
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-
-/* Posts and pages
---------------------------------------------- */
-.sticky {
-  display: block;
-}
-
-.post,
-.page {
-  margin: 0 0 1.5em;
-}
-
-.updated:not(.published) {
-  display: none;
-}
-
-.page-content,
-.entry-content,
-.entry-summary {
-  margin: 1.5em 0 0;
-}
-
-.page-links {
-  clear: both;
-  margin: 0 0 1.5em;
-}
 
 /* Comments
 --------------------------------------------- */

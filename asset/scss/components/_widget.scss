@@ -1,0 +1,8 @@
+.widget-area {
+  width: 300px;
+  margin-left: 0;
+
+  @media (min-width: map-get($breakpoints-container, "lg")) {
+    margin-left: var(--margin);
+  }
+}

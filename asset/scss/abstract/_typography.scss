@@ -7,6 +7,8 @@ textarea {
   color: var(--main-font-color);
   font-family: sans-serif;
   font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
   line-height: 1.5;
 }
 
@@ -19,7 +21,16 @@ h6 {
   clear: both;
 }
 
+h2 {
+  font-weight: 300;
+  font-size: 1.875rem;
+  line-height: 1.5;
+}
+
 p {
+  font-size: 1.125rem;
+  line-height: 1.5625;
+
   margin-bottom: 1.5em;
 }
 
@@ -69,4 +80,28 @@ ins {
 
 big {
   font-size: 125%;
+}
+
+
+a {
+  color: var(--main-font-color);
+
+  &:visited {
+    color: var(--main-font-color);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--light-grey-color);
+  }
+
+  &:focus {
+    outline: thin dotted;
+  }
+
+  &:hover,
+  &:active {
+    outline: 0;
+  }
 }

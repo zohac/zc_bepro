@@ -4,13 +4,12 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  max-width: 100vw;
 }
 
-a {
-  color: var(--main-font-color);
-
-  &:visited {
-    color: var(--main-font-color);
-  }
+hr {
+  width: 50px;
+  border: var(--border-solid);
+  background-color: var(--grey-color);
+  margin-left: 0;
 }

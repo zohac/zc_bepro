@@ -7,6 +7,9 @@
  * @package zc_bepro
  */
 
+use ZcBepro\Includes\Category;
+use ZcBepro\Includes\Tag;
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -24,12 +27,21 @@
 				<?php
 				zc_bepro_posted_on();
 				zc_bepro_posted_by();
+
+				// Hide category and tag text for pages.
+				if ( 'post' === get_post_type() ) {
+					Category::render();
+					Tag::render();
+				}
+
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
 	<?php zc_bepro_post_thumbnail(); ?>
+
+    <hr>
 
 	<div class="entry-content">
 		<?php
