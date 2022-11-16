@@ -4,11 +4,30 @@ namespace ZcBepro\Includes;
 
 class Tag {
 	public static function render(): void {
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'zc_bepro' ) );
-		if ( $tags_list ) {
-			/* translators: 1: list of tags. */
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'zc_bepro' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$taxonomy = 'post_tag';
+		$terms = get_the_terms( 0, $taxonomy );
+
+		if ( is_wp_error( $terms ) ) {
+			return;
 		}
+
+		if ( empty( $terms ) ) {
+			return;
+		}
+
+		$tags = '';
+		foreach ( $terms as $term ) {
+			$link = get_term_link( $term, $taxonomy );
+			if ( is_wp_error( $link ) ) {
+				return;
+			}
+			$tags .= sprintf (
+				'<span class="tag-links badge"><a href="%1$s" rel="tag">%2$s</a></span>',
+				esc_url( $link ),
+				$term->name
+			);
+		}
+
+		echo $tags;
 	}
 }
