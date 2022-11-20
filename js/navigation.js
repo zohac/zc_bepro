@@ -12,19 +12,51 @@
 		return;
 	}
 
-	const submenus = siteNavigation.getElementsByClassName( 'menu-item-has-children' );
-
 	function toggleMenu( event, submenu ) {
 		event.preventDefault();
 		const menu = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
 		menu.classList.toggle( 'toggled' );
 	}
 
+	const submenus = siteNavigation.getElementsByClassName( 'menu-item-has-children' );
+
+	function getSpanElement() {
+		const span = document.createElement( 'span' );
+		const textElement = document.createTextNode( 'ᐅ' );
+		span.append( textElement );
+		return span;
+	}
+
+	function getReturnSubMenu() {
+		const liElement = document.createElement( 'li' );
+		const divElement = document.createElement( 'div' );
+		const textElement = document.createTextNode( 'ᐊ' );
+		divElement.append( textElement );
+		divElement.classList.add( 'return' );
+		liElement.append( divElement );
+
+		return liElement;
+	}
+
 	for ( const submenu of submenus ) {
+		const ulElement = submenu.getElementsByTagName( 'ul' )[ 0 ];
+		ulElement.insertBefore( getReturnSubMenu(), ulElement.firstChild );
+		const returnElement = ulElement.getElementsByClassName( 'return' )[ 0 ];
+
+		returnElement.addEventListener( 'click', function( event ) {
+			ulElement.addEventListener( 'animationend', ( event ) => {
+				ulElement.classList.remove( 'close-sub-menu' );
+			} );
+			ulElement.classList.add( 'close-sub-menu' );
+			toggleMenu( event, submenu );
+		} );
+
 		const link = submenu.getElementsByTagName( 'a' )[ 0 ];
+		link.append( getSpanElement() );
 
 		link.addEventListener( 'click', function( event ) {
 			toggleMenu( event, submenu );
+			link.classList.toggle( 'rotate' );
 		} );
 
 		link.addEventListener( 'touchend', function( event ) {
@@ -71,8 +103,13 @@
 		toggledMenu();
 
 		for ( const submenu of submenus ) {
-			const menu = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
-			menu.classList.remove( 'toggled' );
+			const menuItem = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
+			menuItem.classList.remove( 'toggled' );
+
+			const span = submenu.getElementsByTagName( 'span' )[ 0 ];
+			span.remove();
+			const link = submenu.getElementsByTagName( 'a' )[ 0 ];
+			link.append( getSpanElement() );
 		}
 	} );
 
@@ -83,6 +120,11 @@
 		if ( ! isClickInside ) {
 			siteNavigation.classList.remove( 'toggled' );
 			button.setAttribute( 'aria-expanded', 'false' );
+
+			for ( const submenu of submenus ) {
+				const menuItem = submenu.getElementsByClassName( 'sub-menu' )[ 0 ];
+				menuItem.classList.remove( 'toggled' );
+			}
 		}
 	} );
 

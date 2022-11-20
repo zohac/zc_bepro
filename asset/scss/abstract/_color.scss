@@ -1,12 +1,14 @@
 :root {
   --black: hsla(0, 0%, 0%, 1);
   --white: hsla(0, 0%, 100%, 1);
-  --light-grey-color: hsla(212, 7%, 35%, 0.2);
+  --light-grey-color: hsla(170, 0%, 88%, 1);
   --grey-color: hsla(210, 8%, 35%, 1);
   --dark-grey-color: hsla(220, 12%, 20%, 1);
   --light-blue-color: hsla(203, 38%, 49%, 1);
   --blue-color: hsla(220, 30%, 51%, 1);
   --dark-blue-color: hsla(241, 25%, 52%, 1);
+
+  --grey-color-20: hsla(210, 8%, 35%, 0.2);
 
   --main-bg-color: var(--white);
   --second-bg-color: var(--grey-color);
@@ -16,4 +18,5 @@
   --second-font-color: var(--white);
 
   --gradient-color: linear-gradient(139.7deg, var(--light-blue-color) 16.29%, var(--blue-color) 56.6%, var(--dark-blue-color) 89.79%);
+  --overlay-color: hsla(0, 0%, 0%, 0.75);
 }
