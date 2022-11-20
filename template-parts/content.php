@@ -44,8 +44,10 @@ use ZcBepro\Includes\Tag;
     <hr>
 
 	<div class="entry-content">
+
 		<?php
 		the_content(
+			'<span class="btn btn-grey">' .
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
@@ -57,7 +59,7 @@ use ZcBepro\Includes\Tag;
 					)
 				),
 				wp_kses_post( get_the_title() )
-			)
+			) . '</span>'
 		);
 
 		wp_link_pages(

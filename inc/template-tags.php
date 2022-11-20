@@ -58,7 +58,7 @@ if ( ! function_exists( 'zc_bepro_entry_footer' ) ) :
 	 */
 	function zc_bepro_entry_footer() {
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
+			echo '<span class="comments-link btn btn-grey">';
 			comments_popup_link(
 				sprintf(
 					wp_kses(
