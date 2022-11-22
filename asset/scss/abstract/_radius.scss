@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Token name           Value
 //=====================================
 // radius-sharp         0px
@@ -11,13 +13,7 @@ $radius-rounded-4px: 4px;
 $radius-rounded-8px: 8px;
 
 @function radius-pill ($height) {
-  $result: $height / 2;
-
-  @return $result;
-}
-
-@function radius-circle ($height) {
-  $result: $height * $height / 4;
+  $result: calc($height / 2);
 
   @return $result;
 }

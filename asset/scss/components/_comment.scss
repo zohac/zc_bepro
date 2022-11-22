@@ -1,9 +1,37 @@
-/* Comments
---------------------------------------------- */
+@use "../abstract/variables";
+
+$-font-size: variables.$font-size-2x-small;
+$-height: 8px;
+$-width: 8px;
+
 .comment-content a {
   word-wrap: break-word;
 }
 
 .bypostauthor {
   display: block;
+}
+
+.comment-form {
+
+  .required {
+    display: inline-block;
+
+    font-size: variables.$font-size-2x-small;
+
+    height: #{$-height};
+    width: #{$-width};
+
+    color: transparent;
+    background-color: var(--alert-color);
+
+    border-radius: 50%;
+  }
+
+  .comment-form-cookies-consent {
+
+    label {
+      display: initial;
+    }
+  }
 }

@@ -1,6 +1,7 @@
-@import "../../abstract/typography";
-@import "../../abstract/space";
-@import "../../abstract/radius";
+@use "../../abstract/variables";
+@use "../../abstract/space";
+@use "../../abstract/radius";
+@use "../../abstract/function";
 
 // Element      Token
 //=================================
@@ -35,16 +36,16 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-  padding: $space-stack-4x $space-inline-8x;
+  padding: space.$space-stack-4x space.$space-inline-8x;
 
-  @include font-style-normal;
+  @include variables.font-style-normal;
 
-  font-size: $font-size-base;
-  font-weight: $font-weight-thin;
-  line-height: line-height($font-size-base);
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-thin;
+  line-height: function.line-height(variables.$font-size-base);
   color: var(--main-font-color);
 
-  border-radius: $radius-rounded-4px;
+  border-radius: radius.$radius-rounded-4px;
   border: var(--border-solid);
 
   &:focus {

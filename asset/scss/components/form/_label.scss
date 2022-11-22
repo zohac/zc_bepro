@@ -1,0 +1,27 @@
+@use "../../abstract/variables";
+@use "../../abstract/function";
+
+// Element      Token
+//==================================
+// Label        font-size-base
+//              font-weight-bold
+//              font-style-normal
+//              font-height-default
+// Helper text  font-size-small
+//              font-weight-regular
+//              font-style-normal
+//              font-height-default
+
+$-font-size: variables.$font-size-base;
+$-font-weight: variables.$font-weight-medium;
+$-line-height: function.line-height($-font-size);
+
+label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+
+  font-size: #{$-font-size};
+  font-weight: #{$-font-weight};
+  line-height: #{$-line-height};
+}

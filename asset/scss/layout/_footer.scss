@@ -1,11 +1,11 @@
-@use "../abstract/typography";
+@use "../abstract/variables";
 
 .site-footer {
   display: flex;
   align-items: center;
 
-  @include typography.font-style-normal;
-  font-weight: typography.$font-weight-thin;
+  @include variables.font-style-normal;
+  font-weight: variables.$font-weight-thin;
 
   border-top: var(--border-solid);
 }

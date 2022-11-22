@@ -1,4 +1,4 @@
-@use "../abstract/typography";
+@use "../abstract/variables";
 @use "../abstract/space";
 @use "../abstract/radius";
 @use "../abstract/function";
@@ -24,17 +24,17 @@
 // 4px      space-inline-4x
 // 8px      space-inline-8x
 
-$-height: function.height(space.$space-stack-4x, typography.$font-size-base);
+$-height: function.height(space.$space-stack-4x, variables.$font-size-base);
 
 .chip {
   padding: space.$space-stack-4x space.$space-inline-8x;
   margin-left: var(--margin);
 
-  @include typography.font-style-normal;
+  @include variables.font-style-normal;
 
-  font-size: typography.$font-size-x-small;
-  font-weight: typography.$font-weight-thin;
-  line-height: function.line-height(typography.$font-size-x-small);
+  font-size: variables.$font-size-x-small;
+  font-weight: variables.$font-weight-thin;
+  line-height: function.line-height(variables.$font-size-x-small);
 
   border-radius: radius.radius-pill($-height);
   background-color: var(--light-grey-color);
