@@ -1,0 +1,21 @@
+@use "variables";
+
+$-font-height: variables.$font-height-default or 1;
+
+@function height($space-stack: 0, $font-size: 0) {
+  $result: calc($space-stack * 2 + $font-size);
+
+  @return $result;
+}
+
+@function line-height ($font-size) {
+  $result: calc($font-size * $-font-height);
+
+  @return $result;
+}
+
+@function min-width($height) {
+  $result: $height * 2;
+
+  @return $result;
+}

@@ -12,7 +12,7 @@ class Category {
 		$list = '';
 		foreach ($categories as $category) {
 			$list .= sprintf(
-				'<span class="cat-links badge"><a href="%1$s" rel="%2$s">%3$s</a></span>',
+				'<a href="%1$s" rel="%2$s" class="cat-links chip">%3$s</a>',
 				esc_url( get_category_link( $category->term_id ) ),
 				$rel,
 				$category->name

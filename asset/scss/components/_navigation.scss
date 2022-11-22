@@ -1,4 +1,5 @@
-@import "../abstract/variables";
+@use "../abstract/variables";
+@use "../abstract/typography";
 
 //===========================================================
 // 1. Main Menu Mobile, Tablet
@@ -72,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: typography.$font-size-x-large;
 
     &:hover {
       background: var(--gradient-color);
@@ -139,7 +140,7 @@
 .menu-toggle {
   display: block;
 
-  @media (min-width: map-get($breakpoints-container, "md")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "md")) {
     display: none;
   }
 
@@ -176,7 +177,7 @@
 //===========================================================
 // 3. Main Menu
 //===========================================================
-@media (min-width: map-get($breakpoints-container, "md")) {
+@media (min-width: map-get(variables.$breakpoints-container, "md")) {
 
   .main-navigation {
 
@@ -246,7 +247,7 @@
 //===========================================================
 // 4. Animation : Main Menu
 //===========================================================
-@media (min-width: map-get($breakpoints-container, "md")) {
+@media (min-width: map-get(variables.$breakpoints-container, "md")) {
 
   .main-navigation {
 

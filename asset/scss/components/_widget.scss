@@ -1,8 +1,10 @@
+@use "../abstract/variables";
+
 .widget-area {
   width: 300px;
   margin-left: 0;
 
-  @media (min-width: map-get($breakpoints-container, "lg")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
     margin-left: var(--margin);
   }
 }

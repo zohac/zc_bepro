@@ -1,0 +1,50 @@
+@use "../abstract/typography";
+@use "../abstract/space";
+@use "../abstract/radius";
+@use "../abstract/function";
+
+// Element    Token
+//================================
+// Default    font-size-base
+//            font-weight-regular
+//            font-style-normal
+//            font-height-default
+//================================
+// Selected   font-size-base
+//            font-weight-bold
+//            font-style-normal
+//            font-height-default
+
+// Value    Token
+//========================
+// 4px      space-stack-4x
+
+// Value    Token
+//=========================
+// 4px      space-inline-4x
+// 8px      space-inline-8x
+
+$-height: function.height(space.$space-stack-4x, typography.$font-size-base);
+
+.chip {
+  padding: space.$space-stack-4x space.$space-inline-8x;
+  margin-left: var(--margin);
+
+  @include typography.font-style-normal;
+
+  font-size: typography.$font-size-x-small;
+  font-weight: typography.$font-weight-thin;
+  line-height: function.line-height(typography.$font-size-x-small);
+
+  border-radius: radius.radius-pill($-height);
+  background-color: var(--light-grey-color);
+
+  color: var(--dark-grey-color);
+
+  &:hover {
+    background: var(--dark-grey-color) var(--gradient-color);
+    color: var(--second-font-color);
+  }
+
+  &.disabled {}
+}

@@ -1,4 +1,6 @@
-@import "../abstract/variables";
+@use "../abstract/variables";
+@use "../abstract/typography";
+@use "../abstract/function";
 
 .site-header {
   border-bottom: var(--border-solid);
@@ -21,8 +23,8 @@
 }
 
 .site-title {
-  font-weight: 900;
-  font-size: 1.5rem;
+  font-weight: typography.$font-weight-bolder;
+  font-size: typography.$font-size-x-large;
 
   height: 100%;
   margin: 0;
@@ -42,12 +44,12 @@
 .site-description {
   display: none;
 
-  @media (min-width: map-get($breakpoints-container, "lg")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
     display: flex;
     align-items: end;
     font-weight: 300;
-    font-size: 0.9375rem;
-    line-height: 2;
+    font-size: typography.$font-size-base;
+    line-height: function.line-height(typography.$font-size-base);
     height: 100%;
     width: 100%;
   }

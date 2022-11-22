@@ -1,9 +1,11 @@
+@use "../abstract/typography";
+
 .site-footer {
   display: flex;
   align-items: center;
 
-  font-style: normal;
-  font-weight: 300;
+  @include typography.font-style-normal;
+  font-weight: typography.$font-weight-thin;
 
   border-top: var(--border-solid);
 }

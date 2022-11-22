@@ -1,3 +1,5 @@
+@use "../abstract/typography";
+
 .sticky {
   display: block;
 }
@@ -28,6 +30,6 @@
   }
 
   .entry-meta {
-    font-size: 0.875rem;
+    font-size: typography.$font-size-small;
   }
 }

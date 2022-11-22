@@ -22,7 +22,7 @@ class Tag {
 				return;
 			}
 			$tags .= sprintf (
-				'<span class="tag-links badge"><a href="%1$s" rel="tag">%2$s</a></span>',
+				'<a href="%1$s" rel="tag" class="tag-links chip">%2$s</a>',
 				esc_url( $link ),
 				$term->name
 			);

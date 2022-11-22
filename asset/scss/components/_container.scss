@@ -1,4 +1,4 @@
-@import "../abstract/variables";
+@use "../abstract/variables";
 
 /*
                                 .container
@@ -15,23 +15,23 @@ XX-Large    : xxl     ≥1400px   87vw
   margin: 0 auto;
   padding: 0 var(--padding);
 
-  @media (min-width: map-get($breakpoints-container, "sm")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "sm")) {
     max-width: var(--max-width-sm);
   }
 
-  @media (min-width: map-get($breakpoints-container, "md")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "md")) {
     max-width: var(--max-width-md);
   }
 
-  @media (min-width: map-get($breakpoints-container, "lg")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
     max-width: var(--max-width-lg);
   }
 
-  @media (min-width: map-get($breakpoints-container, "xl")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "xl")) {
     max-width: var(--max-width-xl);
   }
 
-  @media (min-width: map-get($breakpoints-container, "xxl")) {
+  @media (min-width: map-get(variables.$breakpoints-container, "xxl")) {
     max-width: var(--max-width-xxl);
   }
 }

@@ -1,0 +1,67 @@
+@import "../../abstract/typography";
+@import "../../abstract/space";
+@import "../../abstract/radius";
+
+// Element      Token
+//=================================
+// Text input   font-size-base
+//              font-weight-regular
+//              font-style-normal
+//              font-height-default
+
+// Value    Token
+//========================
+// 4px      space-stack-4x
+
+// Value    Token
+//==========================
+// 4px      space-inline-4x
+// 8px      space-inline-8x
+// 16px     space-inline-16x
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  padding: $space-stack-4x $space-inline-8x;
+
+  @include font-style-normal;
+
+  font-size: $font-size-base;
+  font-weight: $font-weight-thin;
+  line-height: line-height($font-size-base);
+  color: var(--main-font-color);
+
+  border-radius: $radius-rounded-4px;
+  border: var(--border-solid);
+
+  &:focus {
+    outline: var(--dark-grey-color) solid 1px;
+  }
+
+  &.disabled {}
+
+  &.success {}
+
+  &.error {}
+}
+
+select {
+  border: var(--border-solid);
+}
+
+textarea {
+  width: 100%;
+}

@@ -1,3 +1,63 @@
+@import "function";
+
+// Token name          Value  rem       Usage
+//==========================================================
+// font-size-4x-large  48px   3rem      Header
+// font-size-3x-large  32px   2rem      Header
+// font-size-2x-large  28px   1.75rem   Header
+// font-size-x-large   24px   1.5rem    Header, body text
+// font-size-large     20px   1.25rem   Header, body text
+// font-size-medium    18px   1.125rem  Body text
+// font-size-base      16px   1rem      Body text
+// font-size-small     14px   0.875rem  Description, caption
+// font-size-x-small   12px   0.75rem   Description, caption
+// font-size-2x-small  10px   0.625rem  Description, caption
+$font-size-4x-large: 3rem;
+$font-size-3x-large: 2rem;
+$font-size-2x-large: 1.75rem;
+$font-size-x-large: 1.5rem;
+$font-size-large: 1.25rem;
+$font-size-medium: 1.125rem;
+$font-size-base: 1rem;
+$font-size-small: 0.875rem;
+$font-size-x-small: 0.75rem;
+$font-size-2x-small: 0.625rem;
+
+// Token name           Value
+//==========================================================
+// font-weight-bolder   900
+// font-weight-bold     700
+// font-weight-medium   500
+// font-weight-regular  400
+// font-weight-thin     300
+$font-weight-bolder: 900;
+$font-weight-bold: 700;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-thin: 300;
+
+// Token name                 Value
+//==========================================================
+// font-style-normal          normal
+// font-style-underline       underline
+// font-style-strikethrough   line-through
+@mixin font-style-normal {
+  font-style: normal;
+  text-decoration: none;
+}
+
+@mixin font-style-underline {
+  font-style: normal;
+  text-decoration: underline;
+}
+
+@mixin font-style-strikethrough {
+  font-style: normal;
+  text-decoration: line-through;
+}
+
+//==========================================================
+
 body,
 button,
 input,
@@ -6,10 +66,10 @@ optgroup,
 textarea {
   color: var(--main-font-color);
   font-family: sans-serif;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 1.5;
+  font-size: $font-size-base;
+  font-weight: $font-weight-thin;
+
+  @include font-style-normal;
 }
 
 h1,
@@ -22,14 +82,14 @@ h6 {
 }
 
 h2 {
-  font-weight: 300;
-  font-size: 1.875rem;
-  line-height: 1.5;
+  font-weight: $font-weight-thin;
+  font-size: $font-size-2x-large;
+  line-height: line-height($font-size-x-large);
 }
 
 p {
-  font-size: 1.125rem;
-  line-height: 1.5625;
+  font-size: $font-size-medium;
+  line-height: line-height($font-size-medium);
 
   margin-bottom: 1.5em;
 }
@@ -52,11 +112,12 @@ address {
 pre {
   background: var(--second-font-color);
   font-family: "Courier 10 Pitch", courier, monospace;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
+  font-size: $font-size-base;
+  line-height: line-height($font-size-base);
   overflow: auto;
   padding: 1.6em;
+  margin-bottom: 1.6em;
+  max-width: 100%;
 }
 
 code,
@@ -79,7 +140,8 @@ ins {
 }
 
 big {
-  font-size: 125%;
+  font-size: $font-size-large;
+  line-height: line-height($font-size-large);
 }
 
 
