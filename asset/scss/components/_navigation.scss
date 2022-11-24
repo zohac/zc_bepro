@@ -12,6 +12,29 @@
 // 1. Menu Mobile, Tablet
 //===========================================================
 .main-navigation {
+  --nav-color-background: var(--color-background);
+  //--nav-color-background-hover: ;
+  --nav-color-border: var(--color-border);
+  --nav-color-border-hover: var(--nav-color-shapes);
+  // Shapes : icons/elements
+  --nav-color-shapes: var(--color-text);
+  --nav-color-shapes-hover: var(--nav-color-text);
+  --nav-color-shapes-active: var(--nav-color-text-hover);
+  --nav-color-text: var(--color-text);
+  --nav-color-text-hover: var(--color-text-hover);
+  --nav-color-text-active: var(--color-text-active);
+
+  --nav-color-dark-background: var(--color-dark-background);
+  // --color-dark-background-hover: ;
+  // --color-dark-border: ;
+  // --color-dark-border-hover: var(--color-dark-shapes);
+  // --color-dark-shapes: ;
+  // --color-dark-shapes-hover: var(--color-dark-text);
+  // --color-dark-shapes-active: var(--color-dark-text-hover);
+  --nav-color-dark-text: var(--color-dark-text);
+  // --color-dark-text-hover: ;
+  // --color-dark-text-active: ;
+
   display: flex;
   justify-content: end;
   align-items: center;
@@ -19,11 +42,6 @@
 
   a {
     background-color: transparent;
-
-    &:hover {
-      color: var(--dark-grey-color);
-      background-color: var(--grey-color-20);
-    }
   }
 
   ul {
@@ -33,7 +51,7 @@
     padding-left: 0;
     height: 100%;
     width: 60vw;
-    background-color: var(--main-bg-color);
+    background-color: var(--nav-color-background);
   }
 
   .menu.nav-menu {
@@ -48,7 +66,7 @@
   }
 
   .sub-menu {
-    background-color: var(--main-bg-color);
+    background-color: var(--nav-color-background);
     position: absolute;
     top: 0;
     left: -100vw;
@@ -66,8 +84,8 @@
   .return {
     height: 55px;
     width: 55px;
-    color: var(--second-font-color);
-    background-color: var(--dark-grey-color);
+    color: var(--nav-color-dark-text);
+    background-color: var(--nav-color-dark-background);
 
     display: flex;
     align-items: center;
@@ -86,7 +104,7 @@
     max-width: 100vw;
     width: 100%;
     height: 100vh;
-    background-color: var(--overlay-color);
+    background-color: var(--color-overlay);
     z-index: 0;
     opacity: 0;
     transition: opacity 500ms ease-in;
@@ -102,7 +120,7 @@
   }
 
   > div {
-    background-color: var(--main-bg-color);
+    background-color: var(--nav-color-background);
     position: absolute;
     top: 0;
     left: 0;
@@ -131,7 +149,13 @@
   ul.toggled {
 
     li a {
-      display: flex;
+      display: block;
+      padding: var(--padding);
+
+      span {
+        display: initial;
+        width: auto;
+      }
     }
   }
 }
@@ -200,17 +224,56 @@
 
     .menu-item-has-children {
       position: relative;
+
+      a {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 3px;
+        gap: 0 0;
+        grid-template-areas:
+          ". ."
+          "border-bottom border-bottom";
+        justify-items: end;
+        align-items: center;
+        color: var(--nav-color-text);
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        opacity: 1;
+
+        &::after {
+          grid-area: border-bottom;
+          content: "";
+          background: none;
+          height: 100%;
+          width: 0;
+          transition: width 500ms ease-in-out;
+        }
+
+        &:hover::after {
+          width: 100%;
+          background: var(--gradient-color);
+        }
+      }
+
+      > a span {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding-left: var(--padding);
+      }
     }
 
     .sub-menu {
-      background-color: var(--main-bg-color);
+      background-color: var(--nav-color-background);
       position: absolute;
       z-index: 9999;
       box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
       height: auto;
       width: auto;
       transform: scaleY(0);
-      transition: left 0ms, transform 500ms ease-in-out;
+      opacity: 0;
       top: 100%;
       left: 0;
 
@@ -231,14 +294,57 @@
       top: 0;
     }
 
-    li a {
+    li {
+      height: 100%;
       display: flex;
-      color: var(--main-font-color);
-      border: none;
-      padding: var(--padding);
-      height: auto;
-      width: 200px;
-      opacity: 1;
+      align-items: center;
+
+      a {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3px;
+        gap: 0 0;
+        grid-template-areas:
+          "t"
+          "bb";
+        justify-items: center;
+        align-items: center;
+        color: var(--nav-color-text);
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        opacity: 1;
+
+        &::after {
+          grid-area: bb;
+          content: "";
+          background: none;
+          height: 100%;
+          width: 0;
+          transition: width 500ms ease-in-out;
+        }
+      }
+
+      &.current-menu-item {
+
+        a::after {
+          width: 100%;
+          background: var(--gradient-color);
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+
+        a::after {
+          width: 100%;
+          background: var(--gradient-color);
+        }
+      }
+
+      &.current-menu-item {}
     }
   }
 }
@@ -255,6 +361,8 @@
 
       &.sub-menu {
         transform: scaleY(1);
+        opacity: 1;
+        transition: left 0ms, transform 500ms ease-in-out, opacity 500ms ease-in-out;
       }
     }
   }

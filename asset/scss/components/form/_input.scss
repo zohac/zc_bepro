@@ -36,6 +36,18 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
+  --input-color-background: var(--color-background);
+  //--input-color-background-hover: ;
+  --input-color-border: var(--color-border);
+  --input-color-border-hover: var(--nav-color-shapes);
+  // Shapes : icons/elements
+  --input-color-shapes: var(--color-text);
+  --input-color-shapes-hover: var(--nav-color-text);
+  --input-color-shapes-active: var(--nav-color-text-hover);
+  --input-color-text: var(--color-text);
+  --input-color-text-hover: var(--color-text-hover);
+  --input-color-text-active: var(--color-text-active);
+
   padding: space.$space-stack-4x space.$space-inline-8x;
 
   @include variables.font-style-normal;
@@ -43,10 +55,11 @@ textarea {
   font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-thin;
   line-height: function.line-height(variables.$font-size-base);
-  color: var(--main-font-color);
+  color: var(--input-color-text);
 
   border-radius: radius.$radius-rounded-4px;
   border: var(--border-solid);
+  border-bottom-color: var(--input-color-border);
 
   &:focus {
     outline: var(--dark-grey-color) solid 1px;
@@ -60,7 +73,20 @@ textarea {
 }
 
 select {
+  --select-color-background: var(--color-background);
+  //--select-color-background-hover: ;
+  --select-color-border: var(--color-border);
+  --select-color-border-hover: var(--nav-color-shapes);
+  // Shapes : icons/elements
+  --select-color-shapes: var(--color-text);
+  --select-color-shapes-hover: var(--nav-color-text);
+  --select-color-shapes-active: var(--nav-color-text-hover);
+  --select-color-text: var(--color-text);
+  --select-color-text-hover: var(--color-text-hover);
+  --select-color-text-active: var(--color-text-active);
+
   border: var(--border-solid);
+  border-color: var(--select-color-border);
 }
 
 textarea {

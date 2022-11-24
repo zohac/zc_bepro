@@ -14,6 +14,11 @@ $-width: 8px;
 
 .comment-form {
 
+  .required-field-message {
+    display: inline-flex;
+    align-items: center;
+  }
+
   .required {
     display: inline-block;
 
@@ -23,7 +28,7 @@ $-width: 8px;
     width: #{$-width};
 
     color: transparent;
-    background-color: var(--alert-color);
+    background-color: var(--color-alert);
 
     border-radius: 50%;
   }

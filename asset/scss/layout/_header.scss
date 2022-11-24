@@ -1,12 +1,37 @@
 @use "../abstract/variables";
 @use "../abstract/function";
 
+// --color-background: ;
+// --color-background-hover: ;
+// --color-border: ;
+// --color-border-hover: var(--color-shapes);
+// Shapes : icons/elements
+// --color-shapes: ;
+// --color-shapes-hover: var(--color-text);
+// --color-shapes-active: var(--color-text-hover);
+// --color-text: ;
+// --color-text-hover: ;
+// --color-text-active: ;
+
 .site-header {
+  --hd-color-background: var(--color-background);
+  //--hd-color-background-hover: ;
+  --hd-color-border: var(--color-border);
+  --hd-color-border-hover: var(--hd-color-shapes);
+  //Shapes : icons/elements
+  --hd-color-shapes: var(--color-text);
+  --hd-color-shapes-hover: var(--hd-color-text);
+  --hd-color-shapes-active: var(--hd-color-text-hover);
+  --hd-color-text: var(--color-text);
+  --hd-color-text-hover: var(--color-text-hover);
+  --hd-color-text-active: var(--color-text-active);
+
   border-bottom: var(--border-solid);
+  border-bottom-color: var(--hd-color-border);
   position: sticky;
   top: 0;
 
-  background-color: var(--main-bg-color);
+  background-color: var(--hd-color-background);
 
   .container {
     display: grid;

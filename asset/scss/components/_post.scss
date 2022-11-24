@@ -1,4 +1,5 @@
 @use "../abstract/variables";
+@use "../abstract/space";
 
 .sticky {
   display: block;
@@ -6,7 +7,7 @@
 
 .post,
 .page {
-  margin: 0 0 1.5em;
+  margin: 0 space.$space-stack-16x;
 }
 
 .updated:not(.published) {
@@ -16,12 +17,12 @@
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0;
+  margin: space.$space-stack-16x 0;
 }
 
 .page-links {
   clear: both;
-  margin: 0 0 1.5em;
+  margin: 0 space.$space-stack-16x;
 }
 
 .entry-header {

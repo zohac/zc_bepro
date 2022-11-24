@@ -1,5 +1,6 @@
 @use "function";
 @use "variables";
+@use "space";
 
 body,
 button,
@@ -7,7 +8,7 @@ input,
 select,
 optgroup,
 textarea {
-  color: var(--main-font-color);
+  color: var(--color-text);
   font-family: sans-serif;
   font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-thin;
@@ -40,7 +41,7 @@ p {
   font-size: variables.$font-size-medium;
   line-height: function.line-height(variables.$font-size-medium);
 
-  margin-bottom: 1.5em;
+  margin-bottom: space.$space-stack-24x;
 }
 
 dfn,
@@ -51,21 +52,34 @@ i {
 }
 
 blockquote {
-  margin: 0 1.5em;
+  margin: 0 space.$space-stack-16x;
 }
 
 address {
-  margin: 0 0 1.5em;
+  margin: 0 0 space.$space-stack-16x;
 }
 
 pre {
-  background: var(--second-font-color);
+  --pre-color-background: var(--color-grey-light);
+  //--pre-color-background-hover: ;
+  --pre-color-border: var(--color-grey);
+  --pre-color-border-hover: var(--color-shapes);
+  --pre-color-shapes: var(--color-grey-dark);
+  --pre-color-shapes-hover: var(--color-text);
+  --pre-color-shapes-active: var(--color-text-hover);
+  --pre-color-text: var(--color-grey-dark);
+  --pre-color-text-hover: var(--color-grey-dark);
+  --pre-color-text-active: var(--color-grey-dark);
+
+  background: var(--pre-color-background);
+  color: var(--pre-color-text);
+
   font-family: "Courier 10 Pitch", courier, monospace;
   font-size: variables.$font-size-base;
   line-height: function.line-height(variables.$font-size-base);
   overflow: auto;
-  padding: 1.6em;
-  margin-bottom: 1.6em;
+  padding: space.$space-inset-16x;
+  margin-bottom: space.$space-stack-16x;
   max-width: 100%;
 }
 
@@ -78,13 +92,14 @@ var {
 
 abbr,
 acronym {
-  border-bottom: 1px dotted var(--grey-color);
+  border: 1px dotted;
+  border-color: var(--color-border);
   cursor: help;
 }
 
 mark,
 ins {
-  background: var(--mark-bg-color);
+  background: var(--mark-color-background);
   text-decoration: none;
 }
 
@@ -95,16 +110,19 @@ big {
 
 
 a {
-  color: var(--main-font-color);
+  color: var(--color-text);
 
   &:visited {
-    color: var(--main-font-color);
+    color: var(--color-text);
   }
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--dark-grey-color);
+  &:hover {
+    color: var(--color-text-hover);
+  }
+
+  &:active,
+  &:focus {
+    color: var(--color-text-active);
   }
 
   &:focus {

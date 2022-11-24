@@ -27,6 +27,19 @@
 $-height: function.height(space.$space-stack-4x, variables.$font-size-base);
 
 .chip {
+  --chip-color-background: var(--color-grey-light);
+  --chip-color-background-hover: var(--color-background-hover);
+  --chip-color-border: var(--color-border);
+  --chip-color-border-hover: var(--chip-color-shapes);
+  // Shapes : icons/elements
+  --chip-color-shapes: var(--color-text);
+  --chip-color-shapes-hover: var(--chip-color-text);
+  --chip-color-shapes-active: var(--chip-color-text-hover);
+  --chip-color-text: var(--color-grey-dark);
+  --chip-color-text-hover: var(--color-text-hover);
+  --chip-color-text-active: var(--color-text-active);
+
+  display: inline-block;
   padding: space.$space-stack-4x space.$space-inline-8x;
   margin-left: var(--margin);
 
@@ -37,13 +50,13 @@ $-height: function.height(space.$space-stack-4x, variables.$font-size-base);
   line-height: function.line-height(variables.$font-size-x-small);
 
   border-radius: radius.radius-pill($-height);
-  background-color: var(--light-grey-color);
+  background-color: var(--chip-color-background);
 
-  color: var(--dark-grey-color);
+  color: var(--chip-color-text);
 
   &:hover {
-    background: var(--dark-grey-color) var(--gradient-color);
-    color: var(--second-font-color);
+    background: var(--chip-color-background-hover) var(--gradient-color);
+    color: var(--chip-color-text-hover);
   }
 
   &.disabled {}

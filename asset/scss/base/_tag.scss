@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--color-background);
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -10,6 +10,6 @@ body {
 hr {
   width: 50px;
   border: var(--border-solid);
-  background-color: var(--grey-color);
+  background-color: var(--color-border);
   margin-left: 0;
 }

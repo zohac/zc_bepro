@@ -38,21 +38,27 @@
   --btn-font-size: #{$-font-size};
   --btn-font-weight: #{$-font-weight};
   --btn-line-height: #{$-line-height};
-  --btn-color: var(--dark-grey-color);
-  --btn-bg: var(--light-grey-color);
-  --btn-border: var(--border-solid);
-  --btn-border-color: var(--border-default-color);
   --btn-border-radius: var(--border-radius);
-  --btn-hover-border-color: transparent;
   --btn-disabled-opacity: 0.65;
   --btn-min-width: #{function.min-width($-height)};
+
+  --btn-color-background: var(--color-grey-light);
+  --btn-color-background-hover: var(--gradient-color);
+  --btn-color-border: var(--color-border);
+  --btn-color-border-hover: var(--btn-color-shapes);
+  --btn-color-shapes: var(--color-grey-dark);
+  --btn-color-shapes-hover: var(--btn-color-text);
+  --btn-color-shapes-active: var(--btn-color-text-hover);
+  --btn-color-text: var(--color-grey-dark);
+  --btn-color-text-hover: var(--white);
+  --btn-color-text-active: var(--white);
 
   display: inline-block;
   padding: var(--btn-space-inset);
   font-size: var(--btn-font-size);
   font-weight: var(--btn-font-weight);
   line-height: var(--btn-line-height);
-  color: var(--btn-color);
+  color: var(--btn-color-text);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -60,19 +66,19 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  border: var(--btn-border);
+  border: var(--btn-color-border);
   border-color: transparent;
   border-radius: var(--btn-border-radius);
-  background: var(--btn-bg);
+  background: var(--btn-color-background);
   transition: color 0.15s ease-in-out, background 0.15s ease-in-out, border-color 0.15s ease-in-out;
   min-width: var(--btn-min-width);
 
   &:hover,
   &:active,
   &:focus {
-    background: var(--dark-grey-color) var(--gradient-color);
-    color: var(--second-font-color);
-    border-color: var(--grey-color);
+    background: var(--dark-grey-color) var(--btn-color-background-hover);
+    color: var(--btn-color-text-hover);
+    border-color: var(--btn-color-border-hover);
   }
 }
 
@@ -89,7 +95,7 @@
   &:hover {
 
     a {
-      color: var(--second-font-color);
+      color: var(--btn-color-text-hover);
     }
   }
 }

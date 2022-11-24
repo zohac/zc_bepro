@@ -1,24 +1,101 @@
+@use "color/blue" as b;
+@use "color/red" as r;
+@use "color/yellow" as y;
+@use "color/green" as g;
+@use "color/grey" as gr;
+
+// color system
+// =============================================================================
+// --color-background: ;
+// --color-background-hover: ;
+// --color-border: ;
+// --color-border-hover: var(--color-shapes);
+// Shapes : icons/elements
+// --color-shapes: ;
+// --color-shapes-hover: var(--color-text);
+// --color-shapes-active: var(--color-text-hover);
+// --color-text: ;
+// --color-text-hover: ;
+// --color-text-active: ;
+
+// dark color system
+// =============================================================================
+// --color-dark-background: ;
+// --color-dark-background-hover: ;
+// --color-dark-border: ;
+// --color-dark-border-hover: var(--color-dark-shapes);
+// --color-dark-shapes: ;
+// --color-dark-shapes-hover: var(--color-dark-text);
+// --color-dark-shapes-active: var(--color-dark-text-hover);
+// --color-dark-text: ;
+// --color-dark-text-hover: ;
+// --color-dark-text-active: ;
+
 :root {
-  --black: hsla(0, 0%, 0%, 1);
-  --white: hsla(0, 0%, 100%, 1);
-  --light-grey-color: hsla(170, 0%, 88%, 1);
-  --grey-color: hsla(210, 8%, 35%, 1);
-  --dark-grey-color: hsla(220, 12%, 20%, 1);
+  --black: #{gr.$color-20};
+  --white: #{gr.$color-0};
+
+  --color-grey-light: #{gr.$color-1};
+  --color-grey: #{gr.$color-13};
+  --color-grey-dark: #{gr.$color-16};
+
+  --color-background: var(--white);
+  --color-background-hover: var(--color-grey-dark);
+  --color-border: var(--color-grey);
+  --color-border-hover: var(--color-shapes);
+  --color-shapes: var(--color-grey-dark);
+  --color-shapes-hover: var(--color-text);
+  --color-shapes-active: var(--color-text-hover);
+  --color-text: var(--color-grey);
+  --color-text-hover: var(--color-grey-light);
+  --color-text-active: var(--color-grey-dark);
+
+  --color-dark-background: var(--color-grey-dark);
+  // --color-dark-background-hover: ;
+  // --color-dark-border: ;
+  // --color-dark-border-hover: var(--color-dark-shapes);
+  // --color-dark-shapes: ;
+  // --color-dark-shapes-hover: var(--color-dark-text);
+  // --color-dark-shapes-active: var(--color-dark-text-hover);
+  --color-dark-text: var(--white);
+  // --color-dark-text-hover: ;
+  // --color-dark-text-active: ;
+
+  --light-grey-color: var(--color-grey-light);
+  --grey-color: var(--color-grey);
+  --dark-grey-color: var(--color-grey-dark);
+
+  // Semantics
+  // Colors that help identify status,
+  // see actions, locate help, and understand next steps.
+  //============================================================================
+  --color-alert: #{r.$color-13};
+  --color-success: #{g.$color-16};
+
+  --mark-color-background: #{y.$color-2};
+
+  // Accent
+  // Colors you can use to distinguish elements between them such as tags.
+  // For now there is X colors because we think it is enough
+  // and avoid too much confusions.
+  //============================================================================
   --light-blue-color: hsla(203, 38%, 49%, 1);
-  --blue-color: hsla(220, 30%, 51%, 1);
+  --blue-color: hsla(220, 31%, 51%, 1);
   --dark-blue-color: hsla(241, 25%, 52%, 1);
 
-  --grey-color-20: hsla(210, 8%, 35%, 0.2);
-
-  --main-bg-color: var(--white);
-  --second-bg-color: var(--grey-color);
-  --mark-bg-color: hsl(54, 100%, 88%, 1);
-
-  --main-font-color: var(--grey-color);
-  --second-font-color: var(--white);
-
-  --alert-color: hsla(356, 58%, 52%, 1);
-
   --gradient-color: linear-gradient(139.7deg, var(--light-blue-color) 16.29%, var(--blue-color) 56.6%, var(--dark-blue-color) 89.79%);
-  --overlay-color: hsla(0, 0%, 0%, 0.75);
+
+  // Neutrals & Overlays
+  // They are essential for a perfect visual interface.
+
+  // Please note that Neutrals and Overlays should be influenced
+  // by your Primary Color.
+
+  // This is why we can't provide Neutral and Overlay palettes
+  // As Neutrals have more usages in our interfaces,
+  // we will update the section with the right matrix and we are currently
+  // working on specific parameters to help you define them.
+  //============================================================================
+  --overlay-color: var(--color-overlay);
+  --color-overlay: hsla(var(--color-grey-dark), 0.75);
 }
