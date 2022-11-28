@@ -1,17 +1,87 @@
 @use "../abstract/variables";
+@use "../abstract/space";
+@use "../abstract/function";
 
-//===========================================================
+//==============================================================================
 // 1. Main Menu Mobile, Tablet
 // 2. Animation : Main Menu Mobile, Tablet
 // 3. Main Menu
 // 4. Animation : Main Menu
-//===========================================================
+//==============================================================================
 
+// Component  State           Token
+//==============================================================================
+// Icon       Inactive        font-size-base
+//                            font-weight-regular
+//                            font-style-normal
+//                            font-height-default
+//            Hover, Active   font-size-base
+//                            font-weight-bold
+//                            font-style-normal
+//                            font-height-default
+//==============================================================================
+// Text only  Normal          font-size-base
+//                            font-weight-regular
+//                            font-style-normal
+//                            font-height-default
+//            Hover, Active   font-size-base
+//                            font-weight-bold
+//                            font-style-normal
+//                            font-height-default
 
-//===========================================================
+//==============================================================================
+// Space
+//==============================================================================
+
+// Value  Token
+//==============================================================================
+// 8px    space-stack-8x
+//==============================================================================
+// 16px   space-inline-16x
+
+// normal
+$-normal-font-size: variables.$font-size-base;
+$-normal-font-weight: variables.$font-weight-regular;
+$-normal-line-height: function.line-height($-normal-font-size);
+// hover
+$-hover-font-size: variables.$font-size-base;
+$-hover-font-weight: variables.$font-weight-bold;
+$-hover-line-height: function.line-height($-hover-font-size);
+$-hover-height: variables.$header-height;
+// active
+$-active-font-size: $-hover-font-size;
+$-active-font-weight: $-hover-font-weight;
+$-active-line-height: $-hover-line-height;
+$-active-height: $-hover-height;
+
+$-height: variables.$header-height;
+$-min-width: function.min-width($-height);
+
+//==============================================================================
 // 1. Menu Mobile, Tablet
-//===========================================================
+//==============================================================================
 .main-navigation {
+  // normal
+  --nav-normal-font-size: #{$-normal-font-size};
+  --nav-normal-font-weight: #{$-normal-font-weight};
+  --nav-normal-line-height: #{$-normal-line-height};
+  // hover
+  --nav-hover-font-size: #{$-hover-font-size};
+  --nav-hover-font-weight: #{$-hover-font-weight};
+  --nav-hover-line-height: #{$-hover-line-height};
+  // active
+  --nav-active-font-size: #{$-active-font-size};
+  --nav-active-font-weight: #{$-active-font-weight};
+  --nav-active-line-height: #{$-active-line-height};
+
+  --nav-border-radius: var(--border-radius);
+  --nav-disabled-opacity: 0.65;
+  --nav-min-width: #{$-min-width};
+  --nav-menu-width: 60vw;
+  --nav-space-inline: #{space.$space-inline-16x};
+  --nav-space-satck: #{space.$space-stack-8x};
+
+  // Color
   --nav-color-background: var(--color-background);
   //--nav-color-background-hover: ;
   --nav-color-border: var(--color-border);
@@ -41,7 +111,29 @@
   width: 100%;
 
   a {
-    background-color: transparent;
+
+    @include variables.font-style-normal;
+
+    font-size: var(--nav-normal-font-size);
+    font-weight: var(--nav-normal-font-weight);
+    line-height: var(--nav-normal-line-height);
+    color: var(--nav-color-text);
+
+    padding: 0 var(--nav-space-inline);
+    margin: var(--nav-space-satck) 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+
+      @include variables.font-style-normal;
+
+      font-size: var(--nav-hover-font-size);
+      font-weight: var(--nav-hover-font-weight);
+      line-height: var(--nav-hover-line-height);
+      color: var(--nav-color-text-hover);
+    }
   }
 
   ul {
@@ -50,18 +142,11 @@
     margin: 0;
     padding-left: 0;
     height: 100%;
-    width: 60vw;
+    width: var(--nav-menu-width);
     background-color: var(--nav-color-background);
-  }
 
-  .menu.nav-menu {
-    transition: left 500ms ease-in-out;
-  }
-
-  .menu-item-has-children {
-
-    > a span {
-      margin-left: var(--margin);
+    li {
+      border-bottom: var(--border-solid) var(--nav-color-border);
     }
   }
 
@@ -71,19 +156,16 @@
     top: 0;
     left: -100vw;
     z-index: 9999;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-1);
     height: 100vh;
-    width: 60vw;
-    transition: left 500ms ease-in-out;
-
-    &.toggled li a {
-      border-top: var(--border-solid);
-    }
+    width: var(--nav-menu-width);
   }
 
   .return {
-    height: 55px;
-    width: 55px;
+    --square: 55px;
+
+    height: var(--square);
+    width: var(--square);
     color: var(--nav-color-dark-text);
     background-color: var(--nav-color-dark-background);
 
@@ -91,9 +173,11 @@
     align-items: center;
     justify-content: center;
     font-size: variables.$font-size-x-large;
+    cursor: pointer;
 
     &:hover {
       background: var(--gradient-color);
+      cursor: pointer;
     }
   }
 
@@ -107,16 +191,6 @@
     background-color: var(--color-overlay);
     z-index: 0;
     opacity: 0;
-    transition: opacity 500ms ease-in;
-  }
-
-  li a {
-    display: block;
-    text-decoration: none;
-    padding: var(--padding);
-    border-bottom: var(--border-solid);
-    width: 100%;
-    height: 100%;
   }
 
   > div {
@@ -130,7 +204,7 @@
     .menu.nav-menu {
       position: absolute;
       left: -100vw;
-      padding-top: var(--padding);
+      padding-top: var(--nav-space-satck);
     }
   }
 
@@ -140,17 +214,12 @@
     > div {
       display: block;
     }
-
-    li a {
-      display: flex;
-    }
   }
 
   ul.toggled {
 
     li a {
       display: block;
-      padding: var(--padding);
 
       span {
         display: initial;
@@ -172,22 +241,28 @@
   }
 }
 
-//===========================================================
+//==============================================================================
 // 2. Animation : Menu Mobile, Tablet
-//===========================================================
+//==============================================================================
 .main-navigation {
 
   &.toggled,
   .toggled {
     left: 0;
 
+    .sub-menu {
+      transition: left 500ms ease-in-out;
+    }
+
     .menu.nav-menu {
       left: 0;
+      transition: left 500ms ease-in-out;
     }
 
     .overlay {
       left: 0;
       opacity: 1;
+      transition: opacity 500ms ease-in;
     }
   }
 
@@ -197,9 +272,9 @@
   }
 }
 
-//===========================================================
+//==============================================================================
 // 3. Main Menu
-//===========================================================
+//==============================================================================
 @media (min-width: map-get(variables.$breakpoints-container, "md")) {
 
   .main-navigation {
@@ -222,46 +297,16 @@
       }
     }
 
+    a {
+      min-width: var(--nav-min-width);
+      justify-content: center;
+    }
+
     .menu-item-has-children {
       position: relative;
 
-      a {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 3px;
-        gap: 0 0;
-        grid-template-areas:
-          ". ."
-          "border-bottom border-bottom";
-        justify-items: end;
-        align-items: center;
-        color: var(--nav-color-text);
-        border: none;
-        padding: 0;
-        margin: 0;
-        width: 200px;
-        opacity: 1;
-
-        &::after {
-          grid-area: border-bottom;
-          content: "";
-          background: none;
-          height: 100%;
-          width: 0;
-          transition: width 500ms ease-in-out;
-        }
-
-        &:hover::after {
-          width: 100%;
-          background: var(--gradient-color);
-        }
-      }
-
       > a span {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding-left: var(--padding);
+        padding-left: var(--nav-space-inline);
       }
     }
 
@@ -269,7 +314,7 @@
       background-color: var(--nav-color-background);
       position: absolute;
       z-index: 9999;
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      //box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
       height: auto;
       width: auto;
       transform: scaleY(0);
@@ -280,13 +325,6 @@
       .return {
         display: none;
       }
-
-      &.toggled {
-
-        li a {
-          border-top: var(--border-solid);
-        }
-      }
     }
 
     .sub-menu .sub-menu {
@@ -294,64 +332,45 @@
       top: 0;
     }
 
-    li {
-      height: 100%;
-      display: flex;
-      align-items: center;
+    ul {
 
-      a {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3px;
-        gap: 0 0;
-        grid-template-areas:
-          "t"
-          "bb";
-        justify-items: center;
+      li {
+        height: 100%;
+        display: flex;
         align-items: center;
-        color: var(--nav-color-text);
-        border: none;
-        padding: 0;
-        margin: 0;
-        width: 200px;
-        opacity: 1;
+        border-bottom: 3px solid;
+        border-bottom-color: transparent;
 
-        &::after {
-          grid-area: bb;
-          content: "";
-          background: none;
-          height: 100%;
-          width: 0;
-          transition: width 500ms ease-in-out;
+        &.current-menu-item {
+          border-bottom-color: var(--nav-color-border);
+        }
+
+        &:hover {
+          border-bottom-color: var(--nav-color-border-hover);
+          transition: border-bottom-color 500ms ease-in-out;
         }
       }
 
-      &.current-menu-item {
+      &.toggled {
+        top: #{$-height};
 
-        a::after {
-          width: 100%;
-          background: var(--gradient-color);
+        li {
+          border-bottom: var(--border-solid);
+          border-bottom-color: var(--nav-color-border);
+
+          &:first-child,
+          &:last-child {
+            border: none;
+          }
         }
       }
-
-      &:hover,
-      &:focus,
-      &:active {
-
-        a::after {
-          width: 100%;
-          background: var(--gradient-color);
-        }
-      }
-
-      &.current-menu-item {}
     }
   }
 }
 
-//===========================================================
+//==============================================================================
 // 4. Animation : Main Menu
-//===========================================================
+//==============================================================================
 @media (min-width: map-get(variables.$breakpoints-container, "md")) {
 
   .main-navigation {
@@ -368,7 +387,7 @@
   }
 }
 
-//===========================================================
+//==============================================================================
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {

@@ -3,6 +3,7 @@
 @use "color/yellow" as y;
 @use "color/green" as g;
 @use "color/grey" as gr;
+@use "sass:color";
 
 // color system
 // =============================================================================
@@ -47,7 +48,7 @@
   --color-shapes-hover: var(--color-text);
   --color-shapes-active: var(--color-text-hover);
   --color-text: var(--color-grey);
-  --color-text-hover: var(--color-grey-light);
+  --color-text-hover: var(--color-grey-dark);
   --color-text-active: var(--color-grey-dark);
 
   --color-dark-background: var(--color-grey-dark);
@@ -96,6 +97,13 @@
   // we will update the section with the right matrix and we are currently
   // working on specific parameters to help you define them.
   //============================================================================
-  --overlay-color: var(--color-overlay);
-  --color-overlay: hsla(var(--color-grey-dark), 0.75);
+  --color-overlay: #{color.change(gr.$color-16, $alpha:0.75)};
+  --color-shadow: #{color.change(gr.$color-16, $alpha:0.4)};
+
+  // Token name     Value
+  //============================================================================
+  // box-shadow-1   0 1px 4px #{color}
+  // box-shadow-2   0 2px 10px #{color}
+  --box-shadow-1: 0 1px 4px var(--color-shadow);
+  --box-shadow-2: 0 2px 10px var(--color-shadow);
 }

@@ -22,6 +22,7 @@
 
 	function getSpanElement() {
 		const span = document.createElement( 'span' );
+		span.classList.add( 'icon-after' );
 		const textElement = document.createTextNode( 'ᐅ' );
 		span.append( textElement );
 		return span;

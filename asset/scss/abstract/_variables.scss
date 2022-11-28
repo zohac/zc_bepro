@@ -65,9 +65,10 @@ $font-weight-thin: 300;
 // line height = font size x 1.5
 //==========================================================
 $font-height-default: 1.5;
+$header-height: 85px;
 
 :root {
-  --header-height: 85px;
+  --header-height: #{$header-height};
   --footer-height: 50px;
   --margin: 15px;
   --padding: 15px;
