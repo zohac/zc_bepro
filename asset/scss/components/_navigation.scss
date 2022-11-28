@@ -215,18 +215,6 @@ $-min-width: function.min-width($-height);
       display: block;
     }
   }
-
-  ul.toggled {
-
-    li a {
-      display: block;
-
-      span {
-        display: initial;
-        width: auto;
-      }
-    }
-  }
 }
 
 .menu-toggle {
@@ -275,6 +263,17 @@ $-min-width: function.min-width($-height);
 //==============================================================================
 // 3. Main Menu
 //==============================================================================
+@media (min-width: map-get(variables.$breakpoints-container, "xl")) {
+
+  .main-navigation {
+
+    a {
+      min-width: var(--nav-min-width);
+      justify-content: center;
+    }
+  }
+}
+
 @media (min-width: map-get(variables.$breakpoints-container, "md")) {
 
   .main-navigation {
@@ -298,7 +297,7 @@ $-min-width: function.min-width($-height);
     }
 
     a {
-      min-width: var(--nav-min-width);
+      width: auto;
       justify-content: center;
     }
 
