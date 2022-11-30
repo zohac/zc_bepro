@@ -102,16 +102,27 @@ if ( ! function_exists( 'zc_bepro_post_thumbnail' ) ) :
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function zc_bepro_post_thumbnail() {
+	function zc_bepro_post_thumbnail(int $counter = 0): void {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
+
+		/**
+		 * The first image of a post list has a loading to edger otherwise a loading to lazy
+		 */
+        $loading = (0 === $counter)? 'eager' : 'lazy';
 
 		if ( is_singular() ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail(
+                    'post-header',
+                    [
+                        'alt' => the_title_attribute(['echo' => false]),
+                        'loading' => $loading,
+                    ]
+                ); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
@@ -119,13 +130,14 @@ if ( ! function_exists( 'zc_bepro_post_thumbnail' ) ) :
 			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
-						'post-thumbnail',
+						'post-header',
 						array(
 							'alt' => the_title_attribute(
 								array(
 									'echo' => false,
 								)
 							),
+                            'loading' => $loading
 						)
 					);
 				?>

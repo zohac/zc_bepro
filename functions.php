@@ -104,6 +104,8 @@ function zc_bepro_setup() {
 			'flex-height' => true,
 		)
 	);
+
+	add_image_size('post-header', 683, 384);
 }
 add_action( 'after_setup_theme', 'zc_bepro_setup' );
 

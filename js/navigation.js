@@ -150,27 +150,25 @@
 	 * Sets or removes .focus class on an element.
 	 */
 	function toggleFocus() {
-		if ( event.type === 'focus' || event.type === 'blur' ) {
-			let self = this;
-			// Move up through the ancestors of the current link until we hit .nav-menu.
-			while ( ! self.classList.contains( 'nav-menu' ) ) {
-				// On li elements toggle the class .focus.
-				if ( 'li' === self.tagName.toLowerCase() ) {
-					self.classList.toggle( 'focus' );
-				}
-				self = self.parentNode;
+		let self = this;
+		// Move up through the ancestors of the current link until we hit .nav-menu.
+		while ( ! self.classList.contains( 'nav-menu' ) ) {
+			// On li elements toggle the class .focus.
+			if ( 'li' === self.tagName.toLowerCase() ) {
+				self.classList.toggle( 'focus' );
 			}
+			self = self.parentNode;
 		}
+	}
 
-		if ( event.type === 'touchstart' ) {
-			const menuItem = this.parentNode;
-			event.preventDefault();
-			for ( const link of menuItem.parentNode.children ) {
-				if ( menuItem !== link ) {
-					link.classList.remove( 'focus' );
-				}
+	function touchstartToggleFocus( event ) {
+		const menuItem = this.parentNode;
+		event.preventDefault();
+		for ( const link of menuItem.parentNode.children ) {
+			if ( menuItem !== link ) {
+				link.classList.remove( 'focus' );
 			}
-			menuItem.classList.toggle( 'focus' );
 		}
+		menuItem.classList.toggle( 'focus' );
 	}
 }() );
