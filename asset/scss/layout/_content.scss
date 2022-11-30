@@ -1,8 +1,21 @@
 @use "../abstract/variables";
+@use "../abstract/space";
+
+//==============================================================================
+// Value    Token
+//==============================================================================
+// 64px     space-stack-6x
+
+$-grid-gap: space.$space-stack-64x;
 
 .content {
+  --ct-grid-gap: #{$-grid-gap};
+  --ct-header-height: var(--header-height);
+  --ct-footer-height: var(--footer-height);
+
   display: block;
-  min-height: calc(100vh - var(--header-height) - var(--footer-height) - ( var(--grid-gap) * 2 ));
+  min-height: calc(100vh - var(--ct-header-height) - var(--ct-footer-height) - ( var(--ct-grid-gap) * 2 ));
+  margin-bottom: var(--ct-space-stack);
 
   @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
     display: flex;

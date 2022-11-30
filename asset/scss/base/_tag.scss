@@ -1,3 +1,5 @@
+@use "../abstract/space";
+
 html,
 body {
   background-color: var(--color-background);
@@ -11,5 +13,7 @@ hr {
   width: 50px;
   border: var(--border-solid);
   background-color: var(--color-border);
+  margin-top: space.$space-stack-24x;
   margin-left: 0;
+  margin-bottom: space.$space-stack-64x;
 }

@@ -1,37 +1,52 @@
 @use "../abstract/variables";
+@use "../abstract/space";
+@use "sass:map";
 
-/*
-                                .container
-Extra small : <576px            100%
-Small       : sm      ≥576px    576px-2*7vw
-Medium      : md      ≥768px    768px-2*7vw
-Large       : lg      ≥992px    992px-2*7vw
-X-Large     : xl      ≥1200px   1200px-2*7vw
-XX-Large    : xxl     ≥1400px   87vw
-*/
+//                                .container
+//==============================================================================
+// Extra small : <576px            100%
+// Small       : sm      ≥576px    576px-2*1rem
+// Medium      : md      ≥768px    768px-2*1rem
+// Large       : lg      ≥992px    992px-2*1rem
+// X-Large     : xl      ≥1200px   1200px-2*1rem
+// XX-Large    : xxl     ≥1400px   87vw
+
+// Value  Token
+//==============================================================================
+// 16px   space-inline-16x
+
+$-space-inline: space.$space-inline-16x;
 
 .container {
+  --container-space-inline: #{$-space-inline};
+
+  --container-max-width-sm: calc(#{map.get(variables.$breakpoints-container, "sm")} - ( var(--container-space-inline) * 2 ));
+  --container-max-width-md: calc(#{map.get(variables.$breakpoints-container, "md")} - ( var(--container-space-inline) * 2 ));
+  --container-max-width-lg: calc(#{map.get(variables.$breakpoints-container, "lg")} - ( var(--container-space-inline) * 2 ));
+  --container-max-width-xl: calc(#{map.get(variables.$breakpoints-container, "xl")} - ( var(--container-space-inline) * 2 ));
+  --container-max-width-xxl: 87vw;
+
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--padding);
+  padding: 0 var(--container-space-inline);
 
-  @media (min-width: map-get(variables.$breakpoints-container, "sm")) {
-    max-width: var(--max-width-sm);
+  @media (min-width: map.get(variables.$breakpoints-container, "sm")) {
+    max-width: var(--container-max-width-sm);
   }
 
-  @media (min-width: map-get(variables.$breakpoints-container, "md")) {
-    max-width: var(--max-width-md);
+  @media (min-width: map.get(variables.$breakpoints-container, "md")) {
+    max-width: var(--container-max-width-md);
   }
 
-  @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
-    max-width: var(--max-width-lg);
+  @media (min-width: map.get(variables.$breakpoints-container, "lg")) {
+    max-width: var(--container-max-width-lg);
   }
 
-  @media (min-width: map-get(variables.$breakpoints-container, "xl")) {
-    max-width: var(--max-width-xl);
+  @media (min-width: map.get(variables.$breakpoints-container, "xl")) {
+    max-width: var(--container-max-width-xl);
   }
 
-  @media (min-width: map-get(variables.$breakpoints-container, "xxl")) {
-    max-width: var(--max-width-xxl);
+  @media (min-width: map.get(variables.$breakpoints-container, "xxl")) {
+    max-width: var(--container-max-width-xxl);
   }
 }

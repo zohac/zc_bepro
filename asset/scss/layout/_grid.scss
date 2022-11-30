@@ -1,8 +1,19 @@
+@use "../abstract/space";
+
+//==============================================================================
+// Value    Token
+//==============================================================================
+// 64px     space-stack-6x
+
+$-space-stack: space.$space-stack-64x;
+
 .site {
+  --site-grid-gap: #{$-space-stack};
+
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: var(--header-height) 1fr var(--footer-height);
-  gap: var(--grid-gap) 0;
+  gap: var(--site-grid-gap) 0;
   grid-auto-flow: row;
   grid-template-areas:
     "header"

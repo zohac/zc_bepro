@@ -1,6 +1,8 @@
 @use "../abstract/variables";
 @use "../abstract/function";
+@use "../abstract/space";
 
+//==============================================================================
 // --color-background: ;
 // --color-background-hover: ;
 // --color-border: ;
@@ -13,7 +15,17 @@
 // --color-text-hover: ;
 // --color-text-active: ;
 
+//==============================================================================
+// Value    Token
+//==============================================================================
+// 64px     space-stack-6x
+
+$-space-stack: space.$space-stack-64x;
+
 .site-header {
+  --hd-space-stack: #{$-space-stack};
+  --hd-height: #{variables.$header-height};
+
   --hd-color-background: var(--color-background);
   //--hd-color-background-hover: ;
   --hd-color-border: var(--color-border);
@@ -26,12 +38,14 @@
   --hd-color-text-hover: var(--color-text-hover);
   --hd-color-text-active: var(--color-text-active);
 
+  background-color: var(--hd-color-background);
   border-bottom: var(--border-solid);
   border-bottom-color: var(--hd-color-border);
   position: sticky;
   top: 0;
-
-  background-color: var(--hd-color-background);
+  height: var(--hd-height);
+  margin-bottom: var(--hd-space-stack);
+  z-index: 9999;
 
   .container {
     display: grid;

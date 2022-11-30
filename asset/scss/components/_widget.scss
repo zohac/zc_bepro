@@ -1,10 +1,19 @@
 @use "../abstract/variables";
+@use "../abstract/space";
 
 .widget-area {
-  width: 300px;
-  margin-left: 0;
+  --widget-space-inline: #{space.$space-inline-16x};
+  --widget-space-stack: #{space.$space-stack-64x};
 
-  @media (min-width: map-get(variables.$breakpoints-container, "lg")) {
-    margin-left: var(--margin);
+  width: 100%;
+  margin-top: var(--widget-space-stack);
+}
+
+@media (min-width: map-get(variables.$breakpoints-container, "lg")) {
+
+  .widget-area {
+    width: 300px;
+    margin-left: var(--widget-space-inline);
+    margin-top: 0;
   }
 }

@@ -5,13 +5,13 @@
 
 // Element    Token
 //================================
-// Default    font-size-base
-//            font-weight-regular
+// Default    font-size-x-small
+//            font-weight-thin
 //            font-style-normal
 //            font-height-default
 //================================
-// Selected   font-size-base
-//            font-weight-bold
+// Selected   font-size-x-small
+//            font-weight-thin
 //            font-style-normal
 //            font-height-default
 
@@ -23,8 +23,9 @@
 //=========================
 // 4px      space-inline-4x
 // 8px      space-inline-8x
-
-$-height: function.height(space.$space-stack-4x, variables.$font-size-base);
+$-space-stack: space.$space-stack-4x;
+$-space-inline: space.$space-inline-8x;
+$-height: function.height($-space-stack, variables.$font-size-base);
 
 .chip {
   --chip-color-background: var(--color-grey-light);
@@ -36,12 +37,16 @@ $-height: function.height(space.$space-stack-4x, variables.$font-size-base);
   --chip-color-shapes-hover: var(--chip-color-text);
   --chip-color-shapes-active: var(--chip-color-text-hover);
   --chip-color-text: var(--color-grey-dark);
-  --chip-color-text-hover: var(--color-text-hover);
+  --chip-color-text-hover: var(--white);
   --chip-color-text-active: var(--color-text-active);
 
+  --chip-space-stack: #{$-space-stack};
+  --chip-space-inline: #{$-space-inline};
+
   display: inline-block;
-  padding: space.$space-stack-4x space.$space-inline-8x;
-  margin-left: var(--margin);
+  padding: var(--chip-space-stack) var(--chip-space-inline);
+  margin-left: var(--chip-space-inline);
+  margin-top: var(--chip-space-stack);
 
   @include variables.font-style-normal;
 

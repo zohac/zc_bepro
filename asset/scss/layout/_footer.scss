@@ -1,8 +1,11 @@
 @use "../abstract/variables";
 
 .site-footer {
+  --ft-height: #{variables.$footer-height};
+
   display: flex;
   align-items: center;
+  height: var(--ft-height);
 
   @include variables.font-style-normal;
   font-weight: variables.$font-weight-thin;

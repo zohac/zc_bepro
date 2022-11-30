@@ -1,3 +1,7 @@
+@use "space";
+
+$-space-inline: space.$space-inline-16x;
+
 @keyframes menu-animation-bounce {
 
   0% {
@@ -24,7 +28,7 @@
   100% {
     height: 100%;
     opacity: 1;
-    padding: var(--padding);
+    padding: #{$-space-inline};
   }
 }
 
@@ -34,7 +38,7 @@
     display: block;
     height: 100%;
     opacity: 1;
-    padding: var(--padding);
+    padding: #{$-space-inline};
   }
 
   100% {

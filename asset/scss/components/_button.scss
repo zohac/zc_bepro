@@ -4,6 +4,7 @@
 @use "../abstract/space";
 
 // Button size  Token
+//==============================================================================
 // Large        font-size-medium
 //              font-weight-regular
 //              font-style-normal
@@ -18,23 +19,23 @@
 //              font-height-default
 
 // Value  Token
-//========================
+//==============================================================================
 // 4px    space-inline-4x
 // 12px   space-inline-12x
 
 // Value  Token
-//========================
+//==============================================================================
 // 4px    space-inset-4x
 // 12px   space-inset-8x
 
 @mixin btn-default-value() {
-  $-space: space.$space-inset-8x;
+  $-space-inset: space.$space-inset-8x;
   $-font-size: variables.$font-size-base;
   $-font-weight: variables.$font-weight-regular;
   $-line-height: function.line-height($-font-size);
-  $-height: function.height($-space, $-font-size);
+  $-height: function.height($-space-inset, $-font-size);
 
-  --btn-space-inset: #{$-space};
+  --btn-space-inset: #{$-space-inset};
   --btn-font-size: #{$-font-size};
   --btn-font-weight: #{$-font-weight};
   --btn-line-height: #{$-line-height};
@@ -85,7 +86,6 @@
 .btn {
 
   @include btn-default-value;
-  margin-bottom: var(--margin);
 
   a {
     text-decoration: none;
