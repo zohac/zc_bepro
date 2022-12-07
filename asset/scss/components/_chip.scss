@@ -27,7 +27,7 @@ $-space-stack: space.$space-stack-4x;
 $-space-inline: space.$space-inline-8x;
 $-height: function.height($-space-stack, variables.$font-size-base);
 
-.chip {
+@mixin chip {
   --chip-color-background: var(--color-grey-light);
   --chip-color-background-hover: var(--color-background-hover);
   --chip-color-border: var(--color-border);
@@ -65,4 +65,9 @@ $-height: function.height($-space-stack, variables.$font-size-base);
   }
 
   &.disabled {}
+}
+
+.chip {
+
+  @include chip;
 }

@@ -151,6 +151,7 @@
         background-color: var(--post-color-background);
         padding: var(--post-space-inset) var(--post-space-inset) var(--post-space-inset) 0;
         z-index: 10;
+        width: 40%;
 
         .entry-title {
           width: 100%;
@@ -159,11 +160,15 @@
 
       .post-thumbnail {
         margin-right: var(--post-space-inline-64);
-        width: 100%;
+        max-height: 384px;
+        width: 60%;
 
         img {
-          height: 384px;
+          max-height: 384px;
           width: auto;
+          aspect-ratio: 3/2;
+          object-fit: contain;
+          float: right;
         }
       }
     }

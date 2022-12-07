@@ -1,0 +1,45 @@
+@use "../../abstract/space";
+@use "../../abstract/variables";
+
+$-space-stack: space.$space-stack-16x;
+$-space-inline: space.$space-inline-16x;
+
+.widget_search {
+  --ws-space-stack: #{$-space-stack};
+  --ws-space-inline: #{$-space-inline};
+
+  form {
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin-bottom: var(--ws-space-stack);
+      }
+
+      button {
+        margin: 0;
+        min-width: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: map-get(variables.$breakpoints-container, "md")) {
+
+  .widget_search {
+
+    form {
+
+      div {
+        flex-direction: row;
+
+        input {
+          margin-bottom: 0;
+          margin-right: #{$-space-inline};
+        }
+      }
+    }
+  }
+}

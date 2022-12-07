@@ -1,0 +1,31 @@
+@use "../../abstract/space";
+@use "../../abstract/variables";
+
+$-space-stack: space.$space-stack-16x;
+$-space-inline: space.$space-inline-16x;
+
+.widget_recent_comments {
+  --wrc-space-stack: #{$-space-stack};
+  --wrc-space-inline: #{$-space-inline};
+
+  ul,
+  ol {
+    margin-left: 0;
+    padding-left: 0;
+
+    li {
+      margin-bottom: var(--wre-space-stack);
+    }
+  }
+}
+
+@media (min-width: map-get(variables.$breakpoints-container, "lg")) {
+
+  .widget_recent_comments {
+
+    ul,
+    ol {
+      margin-left: var(--wrc-space-inline);
+    }
+  }
+}

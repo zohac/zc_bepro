@@ -1,0 +1,48 @@
+@use "../../abstract/space";
+@use "../../abstract/variables";
+@use "../chip";
+
+$-space-stack: space.$space-stack-16x;
+$-space-inline: space.$space-inline-16x;
+
+.widget_categories {
+  --wre-space-stack: #{$-space-stack};
+  --wre-space-inline: #{$-space-inline};
+
+  .cat-item {
+
+    @include chip.chip;
+
+    a {
+      text-decoration: none;
+    }
+
+    &:hover {
+
+      a {
+        color: var(--chip-color-text-hover);
+      }
+    }
+  }
+
+  ul,
+  ol {
+    margin-left: 0;
+    padding-left: 0;
+
+    li {
+      margin-bottom: var(--wre-space-stack);
+    }
+  }
+}
+
+@media (min-width: map-get(variables.$breakpoints-container, "lg")) {
+
+  .widget_categories {
+
+    ul,
+    ol {
+      margin-left: var(--wre-space-inline);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use "../../abstract/space";
+@use "../../abstract/variables";
+
+$-space-stack: space.$space-stack-16x;
+$-space-inline: space.$space-inline-16x;
+
+.widget_recent_entries {
+  --wre-space-stack: #{$-space-stack};
+  --wre-space-inline: #{$-space-inline};
+
+  ul,
+  ol {
+    margin-left: 0;
+
+    li {
+      margin-bottom: var(--wre-space-stack);
+    }
+  }
+}
+
+@media (min-width: map-get(variables.$breakpoints-container, "lg")) {
+
+  .widget_recent_entries {
+
+    ul,
+    ol {
+      margin-left: var(--wre-space-inline);
+    }
+  }
+}

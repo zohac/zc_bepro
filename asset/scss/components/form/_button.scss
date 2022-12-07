@@ -6,5 +6,4 @@ input[type="reset"],
 input[type="submit"] {
 
   @include button.btn-default-value;
-  min-width: auto;
 }

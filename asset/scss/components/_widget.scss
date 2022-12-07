@@ -1,12 +1,30 @@
 @use "../abstract/variables";
 @use "../abstract/space";
+@use "widget/search";
+@use "widget/recent-entries";
+@use "widget/recent-comments";
+@use "widget/categories";
+
+$-space-stack-64: space.$space-stack-64x;
+$-space-stack-16: space.$space-stack-16x;
+$-space-inline: space.$space-inline-16x;
 
 .widget-area {
-  --widget-space-inline: #{space.$space-inline-16x};
-  --widget-space-stack: #{space.$space-stack-64x};
+  --widget-space-inline: #{$-space-inline};
+  --widget-space-stack-64: #{$-space-stack-64};
 
   width: 100%;
-  margin-top: var(--widget-space-stack);
+  margin-top: var(--widget-space-stack-64);
+}
+
+.widget {
+  --widget-space-stack-16: #{$-space-stack-16};
+
+  margin: 0 0 var(--widget-space-stack-16);
+}
+
+.widget select {
+  max-width: 100%;
 }
 
 @media (min-width: map-get(variables.$breakpoints-container, "lg")) {

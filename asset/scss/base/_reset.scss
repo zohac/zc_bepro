@@ -1,3 +1,5 @@
+@use "../abstract/space";
+
 /*
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
@@ -12,7 +14,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Base
 	- Elements
 # Components
-	- Widgets
 	- Media
 	- Captions
 	- Galleries
@@ -381,9 +382,15 @@ hr {
   margin-bottom: 1.5em;
 }
 
+$-space-stack: space.$space-stack-16x;
+$-space-inline: space.$space-inline-32x;
+
 ul,
 ol {
-  margin: 0 0 1.5em 3em;
+  --reset-ul-space-stack: #{$-space-stack};
+  --reset-ul-space-inline: #{$-space-inline};
+
+  margin: 0 0 var(--reset-ul-space-stack) var(--reset-ul-space-inline);
 }
 
 ul {
@@ -432,16 +439,6 @@ table {
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-
-/* Widgets
---------------------------------------------- */
-.widget {
-  margin: 0 0 1.5em;
-}
-
-.widget select {
-  max-width: 100%;
-}
 
 /* Media
 --------------------------------------------- */
